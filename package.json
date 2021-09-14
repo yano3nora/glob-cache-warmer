@@ -1,0 +1,64 @@
+{
+  "name": "glob-crawler",
+  "version": "1.0.0",
+  "description": "Simple web crawler for creation CDN cache after deploy.",
+  "engines": {
+    "node": ">=14.x"
+  },
+  "main": "./bin/main.js",
+  "bin": {
+    "glob-crawler": "./bin/main.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "npm run build",
+    "prepare": "npm run build",
+    "test": "jest",
+    "watch": "run-p watch:*",
+    "watch:test": "jest --watch",
+    "watch:webpack": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yano3nora/glob-crawler.git"
+  },
+  "keywords": [
+    "glob",
+    "crawler"
+  ],
+  "author": "yano3nora <yano3@alhino.jp> (https://github.com/yano3nora)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yano3nora/glob-crawler/issues"
+  },
+  "homepage": "https://github.com/yano3nora/glob-crawler#readme",
+  "devDependencies": {
+    "@types/consola": "^2.2.5",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.1",
+    "@types/yargs": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "@webpack-cli/generators": "^2.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jest": "^27.1.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "ts-jest": "^27.0.5",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "consola": "^2.15.3",
+    "glob": "^7.1.7",
+    "yargs": "^17.1.1"
+  }
+}

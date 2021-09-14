@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "paths": {
+      "@libs/*": ["./src/libs/*"],
+      "@commands/*": ["./src/commands/*"],
+    }
+  },
+  "files": ["src/index.ts"]
+}
