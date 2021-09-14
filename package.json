@@ -10,7 +10,7 @@
     "glob-crawler": "./bin/main.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "npm run build",
     "prepare": "npm run build",
