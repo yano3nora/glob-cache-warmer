@@ -1,9 +1,13 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
+const nodeExternals = require('webpack-node-externals');
 
 const config = {
   target: 'node',
+  // https://github.com/liady/webpack-node-externals
+  externalsPresets: { node: true },
+  externals: [nodeExternals()],
   entry: "./src/index.ts",
   output: {
     filename: '[name].js',
