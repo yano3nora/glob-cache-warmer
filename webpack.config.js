@@ -1,7 +1,6 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
-const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
   target: 'node',
@@ -35,12 +34,12 @@ const config = {
   },
 };
 
-module.exports = () => {
-  if (isProduction) {
-    config.mode = "production";
-  } else {
-    config.mode = "development";
+module.exports = (_, argv) => {
+  config.mode = argv.mode;
+
+  if (config.mode === "development") {
     config.devtool = 'inline-source-map';
   }
+
   return config;
 };

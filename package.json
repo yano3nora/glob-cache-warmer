@@ -21,7 +21,7 @@
     "test": "jest",
     "watch": "run-p watch:*",
     "watch:test": "jest --watch",
-    "watch:webpack": "webpack --watch"
+    "watch:webpack": "webpack --mode=development --watch"
   },
   "repository": {
     "type": "git",
