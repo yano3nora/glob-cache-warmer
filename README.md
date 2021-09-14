@@ -18,5 +18,5 @@ $ npm i -D glob-crawler
 $ npx glob-crawler 'https://example.com' '+(images|fonts)/**/*.*'
 
 # Ignore webroot (first) directory
-$ npx glob-crawler  'https://example.com' 'dist/**/*.*' -r
+$ npx glob-crawler 'https://example.com' 'dist/**/*.*' -r
 ```
