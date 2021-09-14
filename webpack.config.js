@@ -7,6 +7,7 @@ const config = {
   target: 'node',
   entry: "./src/index.ts",
   output: {
+    filename: '[name].js',
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
