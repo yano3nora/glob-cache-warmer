@@ -9,6 +9,10 @@
   "bin": {
     "glob-crawler": "./bin/main.js"
   },
+  "files": [
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
