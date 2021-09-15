@@ -1,6 +1,6 @@
 {
   "name": "glob-cache-warmer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple web crawler for creation CDN cache after deploy.",
   "engines": {
     "node": ">=14.x"
