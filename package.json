@@ -1,5 +1,5 @@
 {
-  "name": "glob-crawler",
+  "name": "glob-cache-warmer",
   "version": "1.0.0",
   "description": "Simple web crawler for creation CDN cache after deploy.",
   "engines": {
@@ -7,7 +7,7 @@
   },
   "main": "./bin/main.js",
   "bin": {
-    "glob-crawler": "./bin/main.js"
+    "glob-cache-warmer": "./bin/main.js"
   },
   "files": [
     "bin",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yano3nora/glob-crawler.git"
+    "url": "git+https://github.com/yano3nora/glob-cache-warmer.git"
   },
   "keywords": [
     "glob",
@@ -34,9 +34,9 @@
   "author": "yano3nora <yano3@alhino.jp> (https://github.com/yano3nora)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yano3nora/glob-crawler/issues"
+    "url": "https://github.com/yano3nora/glob-cache-warmer/issues"
   },
-  "homepage": "https://github.com/yano3nora/glob-crawler#readme",
+  "homepage": "https://github.com/yano3nora/glob-cache-warmer#readme",
   "devDependencies": {
     "@types/consola": "^2.2.5",
     "@types/jest": "^27.0.1",
