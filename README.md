@@ -14,6 +14,7 @@ $ npm i -D glob-cache-warmer
 # Crawling your website
 #
 # ref. https://github.com/isaacs/node-glob#glob-primer
+# n.b. please use bash such as git bash instead of powershell when windows
 #
 $ npx glob-cache-warmer 'https://example.com' '+(images|fonts)/**/*.*'
 
