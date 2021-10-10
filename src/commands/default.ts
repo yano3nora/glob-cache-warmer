@@ -1,9 +1,13 @@
-import glob from 'glob'
-import https from 'https'
+import util  from 'util'
 import yargs　from 'yargs'
+import glob from 'glob'
+import pupeteer from 'puppeteer'
 
 import logger from '@libs/logger'
 import urlGenerator from '@libs/url-generator'
+
+// https://github.com/isaacs/node-glob/issues/228
+const asyncGlob = util.promisify(glob)
 
 interface DefaultCommandArgs extends yargs.Arguments {
   url: string;
@@ -34,49 +38,47 @@ export const defaultCommand = {
         default: false,
       })
   },
-  handler: (args: yargs.Arguments<DefaultCommandArgs>) => {
+  handler: async (args: yargs.Arguments<DefaultCommandArgs>) => {
     const [url, err] = urlGenerator(args.url)
 
     if (err) {
-      logger.error(err)
-      return
+      throw err
     }
 
-    glob(args.glob, (err, files) => {
-      if (err) {
-        logger.error(err)
+    let files = await asyncGlob(args.glob)
+
+    if (!files || !files.length) {
+      throw new Error('File not found')
+    }
+
+    if (args.root) {
+      files = files.map(f => f.split('/').slice(1).join('/'))
+    }
+
+    const browser = await pupeteer.launch()
+
+    await Promise.all(files.map(async file => {
+      const page = await browser.newPage()
+      const response = await page.goto(url + file)
+      const metrics = await page.metrics()
+      const headers = response.headers()
+
+      if (!response.ok) {
+        logger.warn('FAIL:', {
+          url: `${url}${file}`,
+          status: response.status(),
+        })
+
         return
       }
 
-      if (args.root) {
-        files = files.map(f => f.split('/').slice(1).join('/'))
-      }
-
-      files.forEach((file) => {
-        https
-          .get(url + file, (res) => {
-            const isOk = (res.statusCode === 200)
-
-            if (isOk) {
-              logger.success('SUCCESS:', {
-                url: `${url}${file}`,
-                status: res.statusCode,
-                message: res.statusMessage,
-                byte: res.headers['content-length'],
-                type: res.headers['content-type'],
-              })
-            } else {
-              logger.warn('FAIL:', {
-                url: `${url}${file}`,
-                status: res.statusCode,
-                message: res.statusMessage,
-              })
-            }
-          })
-          .on('error', (err) => {
-            logger.error(err)
-          })
+      logger.success('SUCCESS:', {
+        url: `${url}${file}`,
+        status: response.status(),
+        byte: headers['content-length'],
+        type: headers['content-type'],
+        time: metrics.TaskDuration,
       })
-    })
+    }))
   }
 }

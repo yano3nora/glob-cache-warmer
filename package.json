@@ -41,6 +41,7 @@
     "@types/consola": "^2.2.5",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.9.1",
+    "@types/puppeteer": "^5.4.4",
     "@types/yargs": "^17.0.2",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
@@ -64,6 +65,7 @@
   "dependencies": {
     "consola": "^2.15.3",
     "glob": "^7.1.7",
+    "puppeteer": "^10.4.0",
     "yargs": "^17.1.1"
   }
 }
