@@ -60,6 +60,17 @@ export const defaultCommand = {
     await Promise.all(files.map(async file => {
       const page = await browser.newPage()
       const response = await page.goto(url + file)
+        .catch(e => {
+          logger.warn('ABORT:', {
+            url: `${url}${file}`,
+            message: e.message,
+          })
+        })
+
+      if (!response) {
+        return
+      }
+
       const metrics = await page.metrics()
       const headers = response.headers()
 
